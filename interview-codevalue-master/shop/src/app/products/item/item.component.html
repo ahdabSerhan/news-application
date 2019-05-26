@@ -1,0 +1,18 @@
+<div>
+    <md-card>
+        <md-card-header>
+            <md-card-title>{{product.Name}} - <small>( {{product.Price| currency:'USD':true}} )</small></md-card-title>
+        </md-card-header>
+        <md-card-content>
+            <h5>{{product.CreatedAt}}</h5>
+            <img alt="{{product.name}}" src="{{image}}" width="200" />
+            <p>
+                {{product.Description}}
+            </p>
+        </md-card-content>
+        <md-card-actions>
+            <button md-raised-button (click)="onProductSelectClick(product)">Details</button>
+            <button md-raised-button (click)="onProductDeleteClick(product)">Delete</button>
+        </md-card-actions>
+    </md-card>
+</div>

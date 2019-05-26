@@ -1,0 +1,20 @@
+<div *ngIf="product">
+    <md-card>
+        <md-card-header>
+            <md-card-title>{{product.Name}} - <small>( {{product.Price| currency:'USD':true}} )</small></md-card-title>
+            <md-card-subtitle><small>{{product.CreatedAt}}</small></md-card-subtitle>
+        </md-card-header>
+        <md-card-content>
+            <img alt="{{product.Name}}" src="{{image}}" width="200" />
+            <p>
+                {{product.Description}}
+            </p>
+        </md-card-content>
+        <md-card-actions>
+            <button md-raised-button (click)="onEditProduct()">Edit</button>
+        </md-card-actions>
+    </md-card>
+</div>
+<div *ngIf="!product">
+    No Product Selected
+</div>

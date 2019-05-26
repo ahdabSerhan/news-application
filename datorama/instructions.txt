@@ -1,0 +1,14 @@
+Instructions :
+
+This is an angular 4 project 
+please use the following steps to run it : 
+
+1) npm install -g @angular/cli 
+2) unzip directory and run npm install 
+3)to run the local host please type 'ng serve' on the terminal
+4) go to localhost:4200
+please use chrome extension 
+https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en
+
+to avoid allow control allow origin problem
+

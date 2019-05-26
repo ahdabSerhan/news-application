@@ -1,0 +1,54 @@
+<header>
+    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
+        <span class="navbar-brand" href="#">Shop</span>
+    </nav>
+</header>
+<div class="productZone">
+    <md-grid-list cols="2" rowHeight="2:1">
+        <md-grid-tile>
+            <div class="container">
+                <div class="starter-template">
+                    <div class="row">
+                        <div class="col-sm-2"><button (click)="onAdd()" class="btn btn-primary">Add</button></div>
+                        <div class="col-sm-5">
+                            <h1 *ngIf="!selectedId">Product List</h1>
+                            <h1 *ngIf="selectedId">Product #{{selectedId}}</h1>
+                        </div>
+                        <div class="col-sm-3">
+                            <input mdInput type="text" placeholder="Search For Product Name" [(ngModel)]="searchByName" (keydown)="onSearchByName($event)" />
+                        </div>
+                        <div class="col-sm-2">
+                            <md-select placeholder="Sort By..." [(ngModel)]="sortBy" (change)="onUpdatePage()">
+                                <md-option *ngFor="let sort of sortByOptions" [value]="sort.key">{{ sort.name }}</md-option>
+                            </md-select>
+                        </div>
+                    </div>
+
+                </div>
+
+                <md-paginator [length]="100" [pageSize]="perPageLimit" [pageSizeOptions]="perPageLimitDefinitions" (page)="onPageSelect($event)">
+                </md-paginator>
+                <div class="frame">
+                    <ul>
+                        <li *ngFor="let item of products">
+                            <app-item [product]="item" (OnSelectProduct)="onSelectedProduct($event)" (OnDeleteProduct)="onDeleteProduct($event)"></app-item>
+                        </li>
+                        <li *ngIf="products.length == 0">No Items Found</li>
+                    </ul>
+                </div>
+            </div>
+        </md-grid-tile>
+        <md-grid-tile>
+            <div class="topContiner">
+                <app-show [product]="selectedProduct" (OnRequestUpdate)="onUpdate()"></app-show>
+            </div>
+        </md-grid-tile>
+    </md-grid-list>
+</div>
+<!-- /.container -->
+
+<footer class="footer">
+    <div class="container">
+        <span class="text-muted">Build By Sivan Wolberg</span>
+    </div>
+</footer>

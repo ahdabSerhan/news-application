@@ -1,0 +1,45 @@
+<div class="jumbotron">
+    <h2>{{title}}</h2>
+    <form [formGroup]="complexForm" (ngSubmit)="onSubmit(complexForm.value)">
+        <!-- We add an additional check to see if the user has at least clicked on the form field before displaying the error -->
+        <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['name'].valid && complexForm.controls['name'].touched}">
+            <md-input-container class="example-full-width">
+                <input mdInput class="form-control" mdInput type="text" placeholder="product Name" [formControl]="complexForm.controls['name']">
+                <md-error *ngIf="complexForm.controls['name'].hasError('required')">
+                    Name is <strong>required</strong>
+                </md-error>
+                <md-error *ngIf="complexForm.controls['name'].hasError('minlength')">
+                    Name is Min Char <strong>2</strong>
+                </md-error>
+                <md-error *ngIf="complexForm.controls['name'].hasError('maxlength')">
+                    Name is Max Char <strong>10</strong>
+                </md-error>
+            </md-input-container>
+        </div>
+        <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['description'].valid && complexForm.controls['description'].touched}">
+            <md-input-container class="example-full-width">
+                <textarea mdInput placeholder="product description" [formControl]="complexForm.controls['description']"></textarea>
+                <md-error *ngIf="complexForm.controls['description'].hasError('required')">
+                    Description is <strong>required</strong>
+                </md-error>
+                <md-error *ngIf="complexForm.controls['description'].hasError('minlength')">
+                    Description is Min Char <strong>2</strong>
+                </md-error>
+            </md-input-container>
+        </div>
+
+        <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['price'].valid && complexForm.controls['price'].touched}">
+            <md-input-container class="example-full-width">
+                <span mdPrefix>$</span>
+                <input type="number" [formControl]="complexForm.controls['price']" mdInput placeholder="Price">
+                <md-error *ngIf="complexForm.controls['price'].hasError('required')">
+                    Price is <strong>required</strong>
+                </md-error>
+            </md-input-container>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" [disabled]="!complexForm.valid">Submit</button>
+            <button type="reset" class="btn btn-primary">Reset</button>
+        </div>
+    </form>
+</div>

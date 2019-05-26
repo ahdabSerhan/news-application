@@ -1,0 +1,78 @@
+<div class="container-fluid" style="width:90%; left:10%">
+  <div class="row">
+    <div class="col-md-6">
+      <h1>{{ title }}</h1>
+      <div class="form-group">
+        <label for="name">Stocks :</label>
+        <input type="text" [(ngModel)]="stock" name="stock" class="form-control" (keyup)="getStock(stock)">
+      </div>
+      <hr>
+          
+      <table  class="table table-striped table-bordered">
+          <thead>
+        <tr>
+          <th>
+              <span class="glyphicon glyphicon-sort-by-alphabet" (click)="sortData(stocks,'symbol')"></span>
+              Symbol
+          </th>
+          <th>
+              <span class="glyphicon glyphicon-sort-by-alphabet" (click)="sortData(stocks,'name')"></span>
+            Name
+          </th>
+          <th>
+              <span class="glyphicon glyphicon glyphicon-arrow-down" (click)="sortData(stocks,'previousClose')"></span>
+            Previous Close
+          </th>
+          <th>
+              <span class="glyphicon glyphicon glyphicon-arrow-down" (click)="sortData(stocks,'yearLow')"></span>
+            Year Low
+          </th>
+          <th>
+              <span class="glyphicon glyphicon glyphicon-arrow-down" (click)="sortData(stocks,'yearHigh')"></span>
+            Year High
+          </th>
+          <th>
+              <span class="glyphicon glyphicon glyphicon-arrow-down" (click)="sortData(stocks,'changeFromYearLow')"></span>
+            Change From Year Low
+          </th>
+          <th>
+              <span class="glyphicon glyphicon glyphicon-arrow-down" (click)="sortData(stocks,'changeFromYearHigh')"></span>
+            Change From Year High
+          </th>
+        </tr>
+      </thead>
+        <tr *ngFor="let stock of stocks">
+          <td>
+            {{stock.symbol}}
+          </td>
+          <td>
+            {{stock.name}}
+          </td>
+          <td>
+            {{stock.previousClose}}
+          </td>
+          <td>
+            {{stock.yearLow}}
+          </td>
+          <td>
+            {{stock.yearHigh}}
+          </td>
+          <td [ngStyle] = "{'color':stock.changeFromYearLow<0 ? 'red' : 'green'}">
+            {{stock.changeFromYearLow}}
+          </td>
+          <td [ngStyle] = "{'color':stock.changeFromYearHigh<0 ? 'red' : 'green'}">
+            {{stock.changeFromYearHigh}}
+          </td>
+        </tr>
+
+
+      </table>
+
+    </div>
+
+    <div class="col-md-6">
+      <div [chart]="chart"></div>
+    </div>
+
+  </div>
+</div>

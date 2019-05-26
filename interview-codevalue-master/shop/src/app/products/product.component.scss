@@ -1,0 +1,25 @@
+.productZone {
+    margin: 60px auto;
+    .container {
+        margin: 60px auto;
+        .row {
+            margin: 60px auto;
+            height: 60px;
+            .col-sm-2 {
+                vertical-align: bottom
+            }
+        }
+        .frame {
+            ul {
+                list-style-type: none;
+            }
+            height: 340px;
+            overflow: auto;
+        }
+    }
+}
+
+.topContiner {
+    vertical-align: text-top;
+    margin: 20px auto;
+}
